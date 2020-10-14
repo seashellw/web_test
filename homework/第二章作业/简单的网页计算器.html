@@ -5,160 +5,73 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<script src="./vue.js"></script>
 		<title>Document</title>
-		<style>
-			.center_big {
-				width: 600px;
-				height: 400px;
-				border: 3px #000000 solid;
-				border-radius: 50px;
-				margin-top: 100px;
-				margin-right: auto;
-				margin-left: auto;
-			}
-
-			.center_title {
-				margin-top: 30px;
-				margin-right: auto;
-				margin-left: auto;
-				text-align: center;
-				color: #000000;
-				font-size: 40px;
-				font-weight: 400;
-			}
-
-			.center_input {
-				margin-top: 35px;
-				margin-right: auto;
-				margin-left: auto;
-				color: #000000;
-				display: block;
-				border: 3px #000000 solid;
-				width: 400px;
-				height: 50px;
-				border-radius: 25px;
-				text-align: center;
-				font-size: 15px;
-			}
-
-			.center_button {
-				margin-top: 35px;
-				margin-right: auto;
-				margin-left: auto;
-				color: #000000;
-				display: block;
-				border: 3px #000000 solid;
-				background-color: #dadada;
-				width: 150px;
-				height: 55px;
-				border-radius: 25px;
-				text-align: center;
-				font-size: 18px;
-				font-weight: 600;
-				cursor: pointer;
-				transition: all 0.3s;
-			}
-
-			.center_button_mouseover {
-				background-color: #f1f1f1;
-				border: 3px #f1f1f1 solid;
-				transition: all 0.3s;
-			}
-
-			.bottom_div_style {
-				margin-top: 100px;
-				margin-right: 0px;
-				margin-left: 0px;
-				width: 100%;
-				height: 100px;
-				background-color: #e4e4e4;
-				font-size: 18px;
-				color: #000000;
-			}
-		</style>
+		<style></style>
 	</head>
 
 	<body>
-		<div id="app" :class="app_style">
-			<div :class="title_style">{{title_data}}</div>
-			<input
-				type="text"
-				v-model="name_data"
-				:class="input_style"
-				placeholder="请输入姓名"
-			/>
-			<input
-				type="password"
-				v-model="password_data"
-				:class="input_style"
-				placeholder="请输入密码"
-			/>
-			<button
-				:class="button_style"
-				@click="login"
-				@mouseover="button_mouseover"
-				@mouseleave="button_mouseleave"
-			>
-				登录
-			</button>
+		<div id="app">
+			<div>{{title_data}}</div>
+			<div>
+				<button @click="type_1">加法</button>
+				<button @click="type_2">减法</button>
+				<button @click="type_3">乘法</button>
+				<button @click="type_4">除法</button>
+			</div>
+			<input type="number" v-model="s_n_1_1" placeholder="请输入数字" />
+			<span>{{symbol}}</span>
+			<input type="number" v-model="s_n_1_2" placeholder="请输入数字" />
+			<span>={{r_1}}</span>
 		</div>
-		<div class="bottom_div_style">
-			任意输入姓名和密码，然后点击登录即可<br />
-			若不输入姓名或密码，系统将会提示其不能为空<br />
+		<div>
+			先点击上方选择运算类型的按钮<br />
+			然后在输入框中输入数字即可<br />
 		</div>
 
 		<script>
 			new Vue({
 				el: "#app",
 				data: {
-					title_data: "请登录",
-					name_data: "",
-					password_data: "",
-					button_is_mouseover: false,
+					title_data: "简单的网页计算器",
+					s_n_1_1: "",
+					s_n_1_2: "",
+					symbol: "+",
 				},
 				methods: {
-					login: function () {
-						if (this.name_data == "") {
-							alert("姓名不能为空");
-						} else if (this.password_data == "") {
-							alert("密码不能为空");
-						} else {
-							alert("登录成功。您好，" + this.name_data);
-						}
+					type_1() {
+						this.symbol = "+";
 					},
-					button_mouseover: function () {
-						this.button_is_mouseover = true;
+					type_2() {
+						this.symbol = "-";
 					},
-					button_mouseleave: function () {
-						this.button_is_mouseover = false;
+					type_3() {
+						this.symbol = "*";
+					},
+					type_4() {
+						this.symbol = "/";
 					},
 				},
 				computed: {
-					app_style: function () {
-						return {
-							center_big: true,
-						};
+					n_1_1() {
+						return parseFloat(this.s_n_1_1);
 					},
-					title_style: function () {
-						return {
-							center_title: true,
-						};
+					n_1_2() {
+						return parseFloat(this.s_n_1_2);
 					},
-					input_style: function () {
-						return {
-							center_input: true,
-						};
-					},
-					button_style: function () {
-						if (this.button_is_mouseover) {
-							return {
-								center_button: true,
-								center_button_mouseover: true,
-							};
+					r_1() {
+						if (this.n_1_1 && this.n_1_2) {
+							if (this.symbol == "+") {
+								return this.n_1_1 + this.n_1_2;
+							} else if (this.symbol == "-") {
+								return this.n_1_1 - this.n_1_2;
+							} else if (this.symbol == "*") {
+								return this.n_1_1 * this.n_1_2;
+							} else if (this.symbol == "/") {
+								return this.n_1_1 / this.n_1_2;
+							} else {
+								return "";
+							}
 						} else {
-							return {
-								center_button: true,
-								center_button_mouseover: false,
-							};
+							return "";
 						}
 					},
 				},
