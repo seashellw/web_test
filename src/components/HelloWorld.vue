@@ -1,6 +1,8 @@
 <template>
-<el-backtop target=".page-component__scroll .el-scrollbar__wrap"></el-backtop>
 <div>
+    <template>
+        <el-backtop></el-backtop>
+    </template>
     <el-container>
         <el-header>
             <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
@@ -23,7 +25,9 @@
                 </el-submenu>
             </el-menu>
         </el-header>
-        <el-main>main </el-main>
+        <el-main>
+            <main_manage_center></main_manage_center>
+        </el-main>
         <el-footer height="120px">
             <div class="el_footer_style">
                 <el-divider><i class="el-icon-user-solid"></i></el-divider>
@@ -36,6 +40,7 @@
 </template>
 
 <script>
+import main_manage_center from "./main_manage_center";
 export default {
     name: "HelloWorld",
     props: {
@@ -61,6 +66,9 @@ export default {
         },
     },
     computed: {},
+    components: {
+        main_manage_center,
+    },
 };
 </script>
 

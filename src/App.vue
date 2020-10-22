@@ -9,9 +9,13 @@ import HelloWorld from "./components/HelloWorld.vue";
 
 export default {
     name: "app",
+    data() {
+        return {};
+    },
     components: {
         HelloWorld,
     },
+    computed: {},
 };
 </script>
 

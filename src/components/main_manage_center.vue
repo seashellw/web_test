@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="main_manage_center_style">
     <el-table :data="tableData" style="width: 100%">
         <el-table-column prop="date" label="日期" width="180"> </el-table-column>
         <el-table-column prop="name" label="姓名" width="180"> </el-table-column>
@@ -39,4 +39,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.main_manage_center_style {
+    height: 6000px;
+}
+</style>
