@@ -26,7 +26,7 @@
             </el-menu>
         </el-header>
         <el-main>
-            <main_manage_center></main_manage_center>
+            <MainManageCenter></MainManageCenter>
         </el-main>
         <el-footer height="120px">
             <div class="el_footer_style">
@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import main_manage_center from "./main_manage_center";
+import MainManageCenter from "./MainManageCenter";
 export default {
     name: "HelloWorld",
     props: {
@@ -67,7 +67,7 @@ export default {
     },
     computed: {},
     components: {
-        main_manage_center,
+        MainManageCenter,
     },
 };
 </script>

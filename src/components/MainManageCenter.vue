@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: "main_manage_center",
+    name: "MainManageCenter",
     data() {
         return {
             tableData: [{
